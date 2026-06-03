@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="su">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ujian Bahasa Sunda — Hayu Diajar! ✨</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  </head>
+  <body data-theme="kuromi">
+    <!-- Bintang melayang di latar -->
+    <div class="bg-deco" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="brand">📚 Ujian Basa Sunda</div>
+      <div class="poin-pill" id="poinPill" title="Total poin reward">⭐ <span id="poinTotal">0</span></div>
+    </header>
+
+    <main id="app" class="app">
+      <!-- LAYAR 1: PILIH TÉMA -->
+      <section class="screen screen--tema" id="screenTema">
+        <h1 class="judul">Hayu, pilih dunya karakter karesep! 💫</h1>
+        <p class="sub">Klik salah sahiji ngarah tampilanna jadi karesep hidep.</p>
+        <div class="tema-grid" id="temaGrid"></div>
+      </section>
+
+      <!-- LAYAR 2: PILIH KELAS + NAMA -->
+      <section class="screen hidden" id="screenKelas">
+        <h1 class="judul">Wilujeng sumping! 🎀</h1>
+        <label class="field">
+          <span>Saha nami hidep?</span>
+          <input type="text" id="inputNama" placeholder="Tulis nami di dieu…" maxlength="20" />
+        </label>
+        <p class="sub">Sabaraha soal nu rék digarap?</p>
+        <div class="jumlah-grid" id="jumlahGrid">
+          <button class="jumlah-btn" data-jumlah="10">10 soal</button>
+          <button class="jumlah-btn active" data-jumlah="20">20 soal</button>
+          <button class="jumlah-btn" data-jumlah="0">Kabéh (40)</button>
+        </div>
+
+        <p class="sub">Hidep rék ujian kelas sabaraha?</p>
+        <div class="kelas-grid">
+          <button class="kelas-btn" data-kelas="2">
+            <span class="kelas-emoji">2️⃣</span>
+            <span class="kelas-label">Kelas 2 SD</span>
+            <span class="kelas-desc">soal seru</span>
+          </button>
+          <button class="kelas-btn" data-kelas="3">
+            <span class="kelas-emoji">3️⃣</span>
+            <span class="kelas-label">Kelas 3 SD</span>
+            <span class="kelas-desc">soal seru</span>
+          </button>
+        </div>
+        <button class="link-btn" id="btnGantiTema">← Ganti téma</button>
+      </section>
+
+      <!-- LAYAR 3: UJIAN -->
+      <section class="screen hidden" id="screenQuiz">
+        <div class="quiz-head">
+          <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <div class="quiz-meta">
+            <span id="quizNomor">Soal 1/25</span>
+            <span class="poin-jalan">⭐ <span id="quizPoin">0</span></span>
+          </div>
+        </div>
+
+        <div class="bacaan hidden" id="bacaanBox"></div>
+        <h2 class="soal-teks" id="soalTeks"></h2>
+        <div class="pilihan" id="pilihanList"></div>
+
+        <div class="feedback hidden" id="feedback">
+          <div class="feedback-emoji" id="feedbackEmoji"></div>
+          <div class="feedback-teks" id="feedbackTeks"></div>
+          <button class="btn btn-primary" id="btnLanjut">Lanjut →</button>
+        </div>
+      </section>
+
+      <!-- LAYAR 4: HASIL -->
+      <section class="screen hidden" id="screenHasil">
+        <div class="confetti" id="confetti" aria-hidden="true"></div>
+        <div class="medali" id="medali">🏅</div>
+        <h1 class="judul" id="hasilJudul">Hébat!</h1>
+        <div class="skor-besar"><span id="hasilBenar">0</span><span class="skor-bagi">/<span id="hasilTotal">25</span></span></div>
+        <p class="hasil-persen" id="hasilPersen">0%</p>
+        <div class="poin-dapat">Hidep meunang <strong>⭐ <span id="hasilPoin">0</span> poin</strong> ujian ieu!</div>
+
+        <div class="evaluasi" id="evaluasiBox"></div>
+
+        <div class="aksi-hasil">
+          <button class="btn btn-wa" id="btnShareWA">📲 Kirim ka Mamah/Papah (WhatsApp)</button>
+          <button class="btn btn-accent" id="btnToko">🎁 Buka Toko Hadiah</button>
+          <button class="btn btn-ghost" id="btnUlang">🔁 Ujian deui</button>
+        </div>
+      </section>
+
+      <!-- LAYAR 5: TOKO HADIAH -->
+      <section class="screen hidden" id="screenToko">
+        <h1 class="judul">🎁 Toko Hadiah</h1>
+        <p class="sub">Tukeurkeun poin hidep jadi hadiah! Poin ayeuna: <strong>⭐ <span id="tokoPoin">0</span></strong></p>
+        <div class="toko-grid" id="tokoGrid"></div>
+
+        <div class="voucher-wrap" id="voucherWrap">
+          <h3>🎟️ Voucher nu geus ditebus</h3>
+          <div id="voucherList" class="voucher-list"></div>
+        </div>
+        <button class="btn btn-ghost" id="btnBalikHasil">← Balik</button>
+      </section>
+    </main>
+
+    <!-- Toast pop-up poin -->
+    <div class="toast hidden" id="toast"></div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

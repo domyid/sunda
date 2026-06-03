@@ -1,6 +1,9 @@
 # sunda
 Ujian Bahasa Sunda
 
+buatkan web dengan html css dan vanillajs es6+ module untuk simulasi ujian bahasa sunda kelas 2 dan 3 SD. anak saya cewe dua yang satu suka kuromi dan keropi satu lagi suka cinnamorol dan pochaco(buat pilihan tema di awal memilih), sesuaikan theme nya lebih ke disukai anak. soalnya dibuat pilihan ganda, ada skor dan ada reward yang didapatkan berupa poin yang bisa ditukar ke snack atau screen time atau lainnya. kisi kisi ada di README.md. pastikan menyenangkan dan anak saya bisa mengerjakan ujian esok hari. oh iya jangan lupa di depan dia milih mau ujian kelas 2 atau kelas 3. terus setelah beres ujian bisa share whatsapp yang berisi skor, dan evaluasi jawaban yang salah dia yang benernya apa. untuk kelas 3 karena ga ada kisi kisi, kamu bisa memanfaatkan web search untuk mencari kisi kisi kelas 3
+
+
 ## KISI-KISI ASAS BAHASA SUNDA KELAS 2
 
 No	Materi	Indikator Soal
