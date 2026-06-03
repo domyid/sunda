@@ -59,6 +59,20 @@ body {
   background: rgba(255, 255, 255, 0.12);
 }
 .brand { color: #fff; font-weight: 800; font-size: 1.05rem; text-shadow: 0 2px 6px #0005; }
+.topbar-kanan { display: flex; align-items: center; gap: 10px; }
+.sora-toggle {
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px #0003;
+  transition: transform 0.15s;
+}
+.sora-toggle:hover { transform: scale(1.1); }
+.sora-toggle.mati { opacity: 0.55; }
 .poin-pill {
   background: var(--star);
   color: #5a3d00;
@@ -227,6 +241,37 @@ body {
   line-height: 1.5;
 }
 .bacaan-label { font-weight: 800; color: var(--primary); display: block; margin-bottom: 4px; }
+
+.gambar-box {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  text-align: center;
+  font-size: 5.5rem;
+  line-height: 1;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+  animation: bounce 1.4s infinite alternate;
+}
+
+.btn-dengekeun {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 0.92rem;
+  cursor: pointer;
+  margin-bottom: 14px;
+  transition: transform 0.15s, filter 0.15s;
+}
+.btn-dengekeun:hover { transform: translateY(-2px); filter: brightness(0.97); }
+.btn-dengekeun:active { transform: scale(0.97); }
 
 .soal-teks {
   background: var(--card);

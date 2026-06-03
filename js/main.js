@@ -7,6 +7,11 @@ import {
   getNama, setNama, getVoucher, tambahVoucher,
 } from "./storage.js";
 import { buatPesanWA, shareKeWA } from "./share.js";
+import {
+  ucapkeun, eureunUcap, warmVoices,
+  setAktif as setSoraAktif, isAktif as soraAktif,
+  soraBener, soraSalah,
+} from "./audio.js";
 
 // ---- Katalog hadiah ----
 const HADIAH = [
@@ -21,6 +26,7 @@ const $ = (id) => document.getElementById(id);
 let quiz = null;
 let temaAktif = null;
 let jumlahSoal = 20; // 0 = kabéh
+let teksUcapAyeuna = "";
 
 // ---------- Navigasi layar ----------
 const SCREENS = ["screenTema", "screenKelas", "screenQuiz", "screenHasil", "screenToko"];
@@ -103,6 +109,14 @@ function renderSoal() {
     bacaanBox.classList.add("hidden");
   }
 
+  const gambarBox = $("gambarBox");
+  if (s.gambar) {
+    gambarBox.textContent = s.gambar;
+    gambarBox.classList.remove("hidden");
+  } else {
+    gambarBox.classList.add("hidden");
+  }
+
   $("soalTeks").innerHTML = `<span class="topik-tag">${s.topik}</span>${s.soal}`;
 
   const list = $("pilihanList");
@@ -116,7 +130,14 @@ function renderSoal() {
     list.appendChild(btn);
   });
 
+  // Téks pikeun dibacakeun nyaring (soal + pilihan).
+  teksUcapAyeuna =
+    (s.bacaan ? s.bacaan + ". " : "") +
+    s.soal + ". " +
+    s.pilihanAcak.map((p, i) => `${labels[i]}. ${p}`).join(". ");
+
   $("feedback").classList.add("hidden");
+  ucapkeun(teksUcapAyeuna); // otomatis maca soal
 }
 
 function pilihJawaban(i, btn) {
@@ -126,6 +147,9 @@ function pilihJawaban(i, btn) {
 
   const s = soalAyeuna(quiz);
   const { leres, poinDidapat } = jawab(quiz, i);
+
+  eureunUcap();
+  if (leres) soraBener(); else soraSalah();
 
   btn.classList.add(leres ? "benar" : "salah");
   if (!leres) {
@@ -150,6 +174,7 @@ function pilihJawaban(i, btn) {
 }
 
 function kaLanjut() {
+  eureunUcap();
   if (lanjut(quiz)) {
     renderSoal();
   } else {
@@ -276,6 +301,7 @@ function shareHasil() {
 function init() {
   renderTema();
   updatePoinPill();
+  warmVoices();
 
   // Téma awal (preview tina nu kasimpen, tapi tetep mecak layar pilih téma)
   const saved = getSavedTheme();
@@ -292,6 +318,13 @@ function init() {
   document.querySelectorAll(".kelas-btn").forEach((b) =>
     b.addEventListener("click", () => mulaiUjian(parseInt(b.dataset.kelas, 10)))
   );
+  $("btnDengekeun").addEventListener("click", () => ucapkeun(teksUcapAyeuna));
+  $("soraToggle").addEventListener("click", () => {
+    const baru = !soraAktif();
+    setSoraAktif(baru);
+    $("soraToggle").textContent = baru ? "🔊" : "🔇";
+    $("soraToggle").classList.toggle("mati", !baru);
+  });
   $("btnLanjut").addEventListener("click", kaLanjut);
   $("btnShareWA").addEventListener("click", shareHasil);
   $("btnToko").addEventListener("click", () => { renderToko(); tampil("screenToko"); });

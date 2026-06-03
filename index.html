@@ -13,7 +13,10 @@
 
     <header class="topbar">
       <div class="brand">📚 Ujian Basa Sunda</div>
-      <div class="poin-pill" id="poinPill" title="Total poin reward">⭐ <span id="poinTotal">0</span></div>
+      <div class="topbar-kanan">
+        <button class="sora-toggle" id="soraToggle" title="Hurungkeun/pareuman sora" aria-label="Sora">🔊</button>
+        <div class="poin-pill" id="poinPill" title="Total poin reward">⭐ <span id="poinTotal">0</span></div>
+      </div>
     </header>
 
     <main id="app" class="app">
@@ -35,7 +38,7 @@
         <div class="jumlah-grid" id="jumlahGrid">
           <button class="jumlah-btn" data-jumlah="10">10 soal</button>
           <button class="jumlah-btn active" data-jumlah="20">20 soal</button>
-          <button class="jumlah-btn" data-jumlah="0">Kabéh (40)</button>
+          <button class="jumlah-btn" data-jumlah="0">Kabéh</button>
         </div>
 
         <p class="sub">Hidep rék ujian kelas sabaraha?</p>
@@ -67,7 +70,9 @@
         </div>
 
         <div class="bacaan hidden" id="bacaanBox"></div>
+        <div class="gambar-box hidden" id="gambarBox"></div>
         <h2 class="soal-teks" id="soalTeks"></h2>
+        <button class="btn-dengekeun" id="btnDengekeun">🔊 Dengekeun soalna</button>
         <div class="pilihan" id="pilihanList"></div>
 
         <div class="feedback hidden" id="feedback">
